@@ -292,7 +292,16 @@
             </div>
 
             <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-                <form class="space-y-8">
+                <form action="https://formspree.io/f/mrbkqkro" method="POST" class="space-y-8" id="bulk-order-form">
+                    <!-- Hidden fields for Formspree -->
+                    <input type="hidden" name="_subject" value="🚀 New Bulk Order Request from Ireishprint Landing Page" />
+                    <input type="hidden" name="_next" value="thank-you.html" />
+                    <input type="hidden" name="_template" value="box" />
+                    
+                    <!-- Hidden fields to track form selections -->
+                    <input type="hidden" name="order_type" id="order_type_hidden" />
+                    <input type="hidden" name="selected_tier" id="selected_tier_hidden" />
+                    <input type="hidden" name="estimated_savings" id="estimated_savings_hidden" />
                     <!-- Organization Name -->
                     <div>
                         <label class="block text-lg font-semibold text-gray-800 mb-3">
@@ -301,6 +310,7 @@
                         </label>
                         <input 
                             type="text" 
+                            name="organization_name"
                             placeholder="e.g., Alpha Beta Gamma Chapter, State University"
                             class="w-full px-4 py-3 border border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                             required
@@ -442,6 +452,7 @@
                                 <div>
                                     <label class="block text-sm font-semibold text-blue-800 mb-3">Product Links *</label>
                                     <textarea 
+                                        name="product_links"
                                         rows="5"
                                         placeholder="Paste product links here (one per line):&#10;&#10;https://ireishprint.com/product/example1&#10;https://ireishprint.com/product/example2&#10;https://ireishprint.com/product/example3&#10;&#10;Include as many products as you need!"
                                         class="w-full px-4 py-3 border border-blue-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
@@ -453,6 +464,7 @@
                                     <div>
                                         <label class="block text-sm font-semibold text-blue-800 mb-3">Sizes & Quantities Needed</label>
                                         <textarea 
+                                            name="sizes_quantities"
                                             rows="3"
                                             placeholder="Example:&#10;Product 1: S(5), M(10), L(15), XL(5)&#10;Product 2: M(8), L(12), XL(10)"
                                             class="w-full px-4 py-3 border border-blue-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
@@ -484,7 +496,7 @@
                             <div class="space-y-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-purple-800 mb-3">Product Type *</label>
-                                    <select class="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all">
+                                    <select name="custom_product_type" class="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all">
                                         <option value="">Select product type...</option>
                                         <option value="t-shirts">T-Shirts</option>
                                         <option value="hoodies">Hoodies/Sweatshirts</option>
@@ -500,6 +512,7 @@
                                 <div>
                                     <label class="block text-sm font-semibold text-purple-800 mb-3">Design Description *</label>
                                     <textarea 
+                                        name="design_description"
                                         rows="5"
                                         placeholder="Describe your design vision in detail:&#10;&#10;• Greek letters needed (ΑΦΑ, ΔΣΘ, etc.)&#10;• Text to include (chapter name, founding year, motto)&#10;• Color scheme preferences&#10;• Logo placement (front, back, sleeve)&#10;• Design style (modern, vintage, bold, minimal)&#10;• Any special requirements or inspiration&#10;&#10;The more details you provide, the better we can create your perfect design!"
                                         class="w-full px-4 py-3 border border-purple-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all resize-none"
@@ -536,7 +549,7 @@
                             <i class="fas fa-tag mr-2 text-blue-600"></i>
                             Primary Product Type (for pricing estimate) *
                         </label>
-                        <select id="product-type" class="w-full px-4 py-3 border border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                        <select name="product_type" id="product-type" class="w-full px-4 py-3 border border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                             <option value="">Select primary product type...</option>
                             <option value="32" data-name="T-Shirt">T-Shirt ($32 avg)</option>
                             <option value="54" data-name="Hoodie">Hoodie ($54 avg)</option>
@@ -595,10 +608,12 @@
                         <div>
                             <input 
                                 type="number" 
+                                name="quantity"
                                 id="exact-quantity"
                                 placeholder="Or enter exact quantity (minimum 10)"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-xl text-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                 min="10"
+                                required
                             />
                         </div>
 
@@ -663,6 +678,7 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Contact Name *</label>
                                 <input 
                                     type="text" 
+                                    name="contact_name"
                                     placeholder="Your full name"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                     required
@@ -673,6 +689,7 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address *</label>
                                 <input 
                                     type="email" 
+                                    name="email"
                                     placeholder="your.email@university.edu"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                     required
@@ -683,6 +700,7 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
                                 <input 
                                     type="tel" 
+                                    name="phone"
                                     placeholder="(555) 123-4567"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                                 />
@@ -690,7 +708,7 @@
                             
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Contact Method</label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                                <select name="contact_method" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
                                     <option value="email">Email</option>
                                     <option value="phone">Phone Call</option>
                                     <option value="text">Text Message</option>
@@ -708,6 +726,7 @@
                             Additional Comments
                         </label>
                         <textarea 
+                            name="additional_comments"
                             rows="4"
                             placeholder="Any additional information, special requests, questions, or concerns..."
                             class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none"
@@ -751,6 +770,9 @@
         document.querySelectorAll('.order-type-card').forEach(card => {
             card.addEventListener('click', function() {
                 const type = this.dataset.type;
+                
+                // Store order type in hidden field
+                document.getElementById('order_type_hidden').value = type === 'existing' ? 'Existing Products' : 'Custom Design';
                 
                 // Remove active class from all cards
                 document.querySelectorAll('.order-type-card').forEach(c => {
@@ -807,6 +829,10 @@
                 const regularPrice = productPrice * quantity;
                 const discountAmount = regularPrice * (discount / 100);
                 const bulkPrice = regularPrice - discountAmount;
+                
+                // Update hidden fields for Formspree
+                document.getElementById('selected_tier_hidden').value = `${quantity} items - ${discount}% discount`;
+                document.getElementById('estimated_savings_hidden').value = `${discountAmount.toFixed(2)}`;
                 
                 // Update calculator display
                 document.getElementById('calc-product').textContent = productName;
@@ -896,6 +922,22 @@
                 });
             });
         }
+        
+        // Form submission handling
+        document.getElementById('bulk-order-form').addEventListener('submit', function(e) {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            // Re-enable button after 5 seconds in case of errors
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 5000);
+        });
     </script>
 
     <!-- Customer Reviews -->
