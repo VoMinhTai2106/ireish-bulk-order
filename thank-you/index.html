@@ -49,16 +49,6 @@
                     </div>
                 </div>
                 
-                <!-- Reference ID -->
-                <div class="bg-gray-100 rounded-xl p-6 mb-8">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Reference Information</h3>
-                    <div class="text-sm text-gray-600 space-y-2">
-                        <p><strong>Submission Time:</strong> <span id="submission-time"></span></p>
-                        <p><strong>Reference ID:</strong> <span id="reference-id" class="font-mono text-blue-600"></span></p>
-                        <p class="text-xs text-gray-500">Save this reference ID for faster support</p>
-                    </div>
-                </div>
-                
                 <!-- Quick Actions -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     <a href="mailto:support@ireishprint.com" class="flex items-center justify-center py-3 px-4 border border-blue-600 rounded-xl text-blue-600 hover:bg-blue-50 transition-colors">
@@ -94,22 +84,9 @@
     </div>
 
     <script>
-        // Set current time
-        const now = new Date();
-        document.getElementById('submission-time').textContent = now.toLocaleString();
-        
-        // Generate reference ID
-        function generateReferenceId() {
-            const timestamp = Date.now().toString().slice(-6);
-            const random = Math.random().toString(36).substr(2, 4).toUpperCase();
-            return `IRE-${timestamp}-${random}`;
-        }
-        
-        document.getElementById('reference-id').textContent = generateReferenceId();
-        
         // Optional: Auto-redirect after 30 seconds
         // setTimeout(() => {
-        //     window.location.href = 'ireishprint-bulk-benefits-final - Copy.html';
+        //     window.location.href = 'https://ireishprint.com/';
         // }, 30000);
     </script>
 </body>
