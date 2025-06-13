@@ -295,7 +295,6 @@
                 <form action="https://formspree.io/f/mrbkqkro" method="POST" class="space-y-8" id="bulk-order-form">
                     <!-- Hidden fields for Formspree -->
                     <input type="hidden" name="_subject" value="🚀 New Bulk Order Request from Ireishprint Landing Page" />
-                    <input type="hidden" name="_next" value="/thank-you" />
                     <input type="hidden" name="_template" value="box" />
                     
                     <!-- Hidden fields to track form selections -->
@@ -932,11 +931,10 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
             submitBtn.disabled = true;
             
-            // Re-enable button after 5 seconds in case of errors
+            // After form submission, redirect to thank you page
             setTimeout(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 5000);
+                window.location.href = 'https://bulk-order.ireishprint.com/thank-you';
+            }, 1000); // Wait 1 second for form to submit
         });
     </script>
 
